@@ -24,25 +24,26 @@ def create_board(map):
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], # Extra boundary row
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], # Extra boundary row
     ]
+   
 
     return maze
 
 def create_coins(maze):
     coins = []
-    for i in range(maze):
-    coins.append((1, 1)) # Placeholder, ligne à retirer
+    
+    for row in range(len(maze)):
+        for column in range(len(maze[row])):
+            if maze[row][column] == 0:
+                coins.append((column,row))
 
-    # TODO: Ajouter la position de toutes les cases '0' à la variable coins. Pour ajouter un élément, vous pouvez utiliser l'expression suivante :
-    # coins.append((x, y))
-    # en remplacant x et y par la position. Notez que le premier coin est à la position (1, 1)
-
-    # TODO: Retirer les coins de chaque "coin" du carré. Vous devez utiliser la variable 'special_coins_pos' et la fonction 'remove'.
-
+    for pos in special_coins_pos:
+        if pos in coins:
+            coins.remove(pos)
     return coins
 
-def create_special_coins(board):
-    special_coins = []
-
-    # TODO: Ajouter des coins aux positions spéciales, en utilisant la variable 'special_coins_pos'.
+def create_special_coins(special_coins):
+    special_coins = special_coins_pos
     
     return special_coins
+
+
